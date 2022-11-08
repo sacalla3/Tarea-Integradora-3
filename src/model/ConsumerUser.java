@@ -5,17 +5,19 @@
 package model;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 /**
  *
  * @author sacal
  */
 
-public abstract class ConsumerUser {
+public abstract class ConsumerUser implements CreatePlaylist{
     
     private String nickname;
     private int id_card;
     private LocalDateTime bonding_date;
+    ArrayList<Playlist> array_playlist = new ArrayList<Playlist>();
     
     private boolean catalog_access;
 
@@ -109,6 +111,30 @@ public abstract class ConsumerUser {
         this.nickname = nickname;
         this.id_card = id_card;
         this.bonding_date = bonding_date;
+    }
+    
+    
+    public void addSongToPlaylist(Songs song, int playlist){
+        array_playlist.get(playlist).setIttemList_songs(song);
+    }
+    
+    public void addPodcastToPlaylist(Podcast podcast, int playlist){
+        array_playlist.get(playlist).setIttemList_podcast(podcast);
+    }
+    
+    public Playlist getIttemArray_playlist(int playlist) {
+        return array_playlist.get(playlist);
+    }
+
+    public ArrayList<Playlist> getArray_playlist() {
+        return array_playlist;
+    }
+
+    public Playlist createPlaylist(String name) {
+        
+        array_playlist.add(new Playlist(name));
+        
+        return array_playlist.get(array_playlist.size() -1);
     }
 
     @Override

@@ -5,13 +5,14 @@
 package model;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 /**
  *
  * @author sacal
  */
 public class PremiumConsumerUser extends ConsumerUser {
-    
+       
     public PremiumConsumerUser(String nickname, int id_card, LocalDateTime bonding_date){
         super(nickname, id_card, bonding_date);
         
@@ -21,4 +22,5 @@ public class PremiumConsumerUser extends ConsumerUser {
         this.setAdvertisement(false);
     }
     
+   
 }
